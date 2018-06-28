@@ -18,4 +18,17 @@ module demo {
             }
         }
     }
+    notification say {
+        leaf message {
+            type string;
+        }
+    }
+	container main{
+		list user{
+			leaf name{
+				type string;
+			}
+		}
+	}
+    
 }

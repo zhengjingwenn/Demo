@@ -56,7 +56,10 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
   					</lifecycleMappingMetadata>
   				</configuration>
   			</plugin>
+  			
+  			
   		</plugins>
   	</pluginManagement>
   </build>
+  
 </project>

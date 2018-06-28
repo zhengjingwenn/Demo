@@ -7,16 +7,19 @@
  */
 
 package org.opendaylight.demo.impl;
+
 import java.util.concurrent.Future;
-import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.hello.rev150105.HelloService;
-import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.hello.rev150105.HelloWorldInput;
-import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.hello.rev150105.HelloWorldOutput;
-import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.hello.rev150105.HelloWorldOutputBuilder;
+
+import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.demo.rev150105.DemoInput;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.demo.rev150105.DemoOutput;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.demo.rev150105.DemoOutputBuilder;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.demo.rev150105.DemoService;
 import org.opendaylight.yangtools.yang.common.RpcResult;
 import org.opendaylight.yangtools.yang.common.RpcResultBuilder;
-public class HelloWorldImpl implements DemoService{
+
+public class DemoImpl implements DemoService {
     @Override
-    public Future<RpcResult<DemoOutput>> DemoMethod(DemoInput input) {
+    public Future<RpcResult<DemoOutput>> demo(DemoInput input) {
         DemoOutputBuilder demoBuilder = new DemoOutputBuilder();
         demoBuilder.setGreeting("demo " + input.getName());
         return RpcResultBuilder.success(demoBuilder.build()).buildFuture();

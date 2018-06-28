@@ -11,6 +11,7 @@ package org.opendaylight.demo.impl;
 import org.opendaylight.controller.md.sal.binding.api.DataBroker;
 import org.opendaylight.controller.sal.binding.api.BindingAwareBroker.RpcRegistration;
 import org.opendaylight.controller.sal.binding.api.RpcProviderRegistry;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.demo.rev150105.DemoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +20,7 @@ public class DemoProvider {
     private static final Logger LOG = LoggerFactory.getLogger(DemoService.class);
     private final DataBroker dataBroker;
     private final RpcProviderRegistry rpcProviderRegistry;
-    private RpcRegistration<HelloService> serviceRegistration;
+    private RpcRegistration<DemoService> serviceRegistration;
 
     public DemoProvider(final DataBroker dataBroker, RpcProviderRegistry rpcProviderRegistry) {
         this.dataBroker = dataBroker;
