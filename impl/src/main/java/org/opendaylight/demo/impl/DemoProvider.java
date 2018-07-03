@@ -13,7 +13,6 @@ import org.opendaylight.controller.md.sal.binding.api.DataTreeIdentifier;
 import org.opendaylight.controller.md.sal.binding.api.NotificationPublishService;
 import org.opendaylight.controller.md.sal.common.api.data.LogicalDatastoreType;
 import org.opendaylight.controller.sal.binding.api.BindingAwareBroker.RpcRegistration;
-import org.opendaylight.controller.sal.binding.api.NotificationProviderService;
 import org.opendaylight.controller.sal.binding.api.RpcProviderRegistry;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.demo.rev150105.DemoService;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.demo.rev150105.Main;
@@ -29,16 +28,13 @@ public class DemoProvider {
     private final DataBroker dataBroker;
     private final RpcProviderRegistry rpcProviderRegistry;
     private RpcRegistration<DemoService> serviceRegistration;
-    private ListenerRegistration <DemoImpl> dataTreeChangeListenerRegistration;
     private NotificationPublishService notificationProvider;
+    private ListenerRegistration <DemoImpl> dataTreeChangeListenerRegistration;
 
 
-    public DemoProvider(final DataBroker dataBroker, RpcProviderRegistry rpcProviderRegistry) {
+    public DemoProvider(DataBroker dataBroker, RpcProviderRegistry rpcProviderRegistry, NotificationPublishService notificationPublishService) {
         this.dataBroker = dataBroker;
         this.rpcProviderRegistry = rpcProviderRegistry;
-    }
-
-    public void setNotificationProvider(final NotificationPublishService notificationPublishService) {
         this.notificationProvider = notificationPublishService;
     }
 
@@ -46,11 +42,12 @@ public class DemoProvider {
      * Method called when the blueprint container is created.
      */
     public void init() {
-        DemoImpl demoImpl = new DemoImpl();
+        DemoImpl demoImpl = new DemoImpl(dataBroker,notificationProvider);
         serviceRegistration = rpcProviderRegistry.addRpcImplementation(DemoService.class, demoImpl);
-        LOG.info("DemoProvider Session Initiated");
         dataTreeChangeListenerRegistration = dataBroker.registerDataTreeChangeListener(
-            new DataTreeIdentifier<User>(LogicalDatastoreType.CONFIGURATION, InstanceIdentifier.<Main>create(Main.class).child(User.class)), demoImpl);
+            new DataTreeIdentifier<User>(LogicalDatastoreType.CONFIGURATION, InstanceIdentifier.<Main>create(Main.class).child(User.class)), new DemoImpl(dataBroker,notificationProvider));
+        LOG.info("DemoProvider Session Initiated");
+
     }
 
     /**
