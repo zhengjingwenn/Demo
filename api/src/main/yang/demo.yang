@@ -23,10 +23,15 @@ module demo {
             type string;
         }
     }
-	container main{
+	container main {
 		list user{
+			key "name";
 			leaf name{
 				type string;
+			}
+			
+			leaf age {
+				type string;				
 			}
 		}
 	}
