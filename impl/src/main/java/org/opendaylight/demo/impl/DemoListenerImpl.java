@@ -45,7 +45,6 @@ public class DemoListenerImpl implements DataTreeChangeListener<User>{
             }
             //Say sayNotification=new SayBuilder().setMessage(rootNode.getDataAfter().getName()).build();
 */           try {
-               LOG.info(rootNode.getDataAfter().getName());
                publishService.putNotification(new SayBuilder().setMessage(rootNode.getDataAfter().getName()).build());
                LOG.info("publish success");
            } catch (InterruptedException e) {
