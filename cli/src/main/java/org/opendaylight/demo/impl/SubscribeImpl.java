@@ -24,6 +24,7 @@ public class SubscribeImpl implements DemoListener {
         // TODO Auto-generated method stub
         LOG.info("Get"+notification.getMessage());
 		LOG.info("Get"+notification.getMessage());
+		System.out.println("Get"+notification.getMessage());
     }
 
 }
