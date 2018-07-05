@@ -27,7 +27,10 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
     init-method="init" destroy-method="close">
     <argument ref="dataBroker" />
     <argument ref="rpcRegistry" />
-    <argument ref="notificationPublishService"/>
+   <!--  <argument ref="notificationPublishService"/> -->
+  </bean>
+  <bean id="listenerImpl" class="org.opendaylight.demo.impl.DemoListenerImpl">
+  	<property name="notificationPublishService" ref="notificationPublishService"></property>
   </bean>
  
 </blueprint>

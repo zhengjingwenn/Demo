@@ -24,6 +24,7 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
     <feature version='${mdsal.version}'>odl-mdsal-broker</feature>
     <feature version='${project.version}'>odl-demo-api</feature>
     <bundle>mvn:org.opendaylight.demo/demo-impl/{{VERSION}}</bundle>
+    <bundle>mvn:org.opendaylight.demo/demo-cli/{{VERSION}}</bundle>
   </feature>
   <feature name='odl-demo-rest' version='${project.version}' description='OpenDaylight :: demo :: REST'>
     <feature version="${project.version}">odl-demo</feature>

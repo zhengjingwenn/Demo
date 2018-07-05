@@ -29,13 +29,12 @@ public class DemoProvider {
     private final RpcProviderRegistry rpcProviderRegistry;
     private RpcRegistration<DemoService> serviceRegistration;
     private NotificationPublishService notificationProvider;
-    private ListenerRegistration <DemoImpl> dataTreeChangeListenerRegistration;
+    private ListenerRegistration <DemoListenerImpl> dataTreeChangeListenerRegistration;
 
 
-    public DemoProvider(DataBroker dataBroker, RpcProviderRegistry rpcProviderRegistry, NotificationPublishService notificationPublishService) {
+    public DemoProvider(DataBroker dataBroker, RpcProviderRegistry rpcProviderRegistry) {
         this.dataBroker = dataBroker;
         this.rpcProviderRegistry = rpcProviderRegistry;
-        this.notificationProvider = notificationPublishService;
     }
 
     /**
@@ -45,7 +44,7 @@ public class DemoProvider {
         DemoImpl demoImpl = new DemoImpl(dataBroker,notificationProvider);
         serviceRegistration = rpcProviderRegistry.addRpcImplementation(DemoService.class, demoImpl);
         dataTreeChangeListenerRegistration = dataBroker.registerDataTreeChangeListener(
-            new DataTreeIdentifier<User>(LogicalDatastoreType.CONFIGURATION, InstanceIdentifier.<Main>create(Main.class).child(User.class)), new DemoImpl(dataBroker,notificationProvider));
+            new DataTreeIdentifier<User>(LogicalDatastoreType.CONFIGURATION, InstanceIdentifier.<Main>create(Main.class).child(User.class)), new DemoListenerImpl());
         LOG.info("DemoProvider Session Initiated");
 
     }

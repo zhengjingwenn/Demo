@@ -103,6 +103,11 @@ and is available at http://www.eclipse.org/legal/epl-v10.html INTERNAL
       <artifactId>demo-impl</artifactId>
       <version>${project.version}</version>
     </dependency>
+     <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>demo-cli</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>demo-api</artifactId>
@@ -133,6 +138,25 @@ and is available at http://www.eclipse.org/legal/epl-v10.html INTERNAL
   									</versionRange>
   									<goals>
   										<goal>check</goal>
+  									</goals>
+  								</pluginExecutionFilter>
+  								<action>
+  									<ignore></ignore>
+  								</action>
+  							</pluginExecution>
+  							<pluginExecution>
+  								<pluginExecutionFilter>
+  									<groupId>
+  										org.codehaus.mojo
+  									</groupId>
+  									<artifactId>
+  										build-helper-maven-plugin
+  									</artifactId>
+  									<versionRange>
+  										[1.12,)
+  									</versionRange>
+  									<goals>
+  										<goal>add-resource</goal>
   									</goals>
   								</pluginExecutionFilter>
   								<action>

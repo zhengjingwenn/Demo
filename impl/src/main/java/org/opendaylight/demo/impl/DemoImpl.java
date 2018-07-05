@@ -36,7 +36,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 
-public class DemoImpl implements DemoService,AutoCloseable,DataTreeChangeListener<User>  {
+public class DemoImpl implements DemoService,AutoCloseable  {
 
     private static final Logger LOG = LoggerFactory.getLogger(DemoImpl.class);
     //private final ExecutorService executor;
@@ -60,6 +60,7 @@ public class DemoImpl implements DemoService,AutoCloseable,DataTreeChangeListene
         WriteTransaction tx = db.newWriteOnlyTransaction();
         //tx.put(LogicalDatastoreType.CONFIGURATION, InstanceIdentifier.<Main>create(Main.class).child(User.class), user);
         tx.put(LogicalDatastoreType.CONFIGURATION, InstanceIdentifier.<Main>create(Main.class).child(User.class, new UserKey(input.getName())), user);
+        LOG.info("把数据写到树上了！");
         Futures.addCallback(tx.submit(), new FutureCallback<Void>() {
 
             @Override
@@ -77,7 +78,7 @@ public class DemoImpl implements DemoService,AutoCloseable,DataTreeChangeListene
         return RpcResultBuilder.success(demoBuilder.build()).buildFuture();
     }
 
-   @Override
+  /* @Override
     public void onDataTreeChanged(Collection<DataTreeModification<User>> changes) {
         // TODO Auto-generated method stub
         for(DataTreeModification<User> change: changes) {
@@ -103,7 +104,7 @@ public class DemoImpl implements DemoService,AutoCloseable,DataTreeChangeListene
         }
         }
 
-    }
+    }*/
 
     @Override
     public void close() throws Exception {
