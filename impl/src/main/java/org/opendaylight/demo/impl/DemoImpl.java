@@ -60,7 +60,6 @@ public class DemoImpl implements DemoService,AutoCloseable  {
         WriteTransaction tx = db.newWriteOnlyTransaction();
         //tx.put(LogicalDatastoreType.CONFIGURATION, InstanceIdentifier.<Main>create(Main.class).child(User.class), user);
         tx.put(LogicalDatastoreType.CONFIGURATION, InstanceIdentifier.<Main>create(Main.class).child(User.class, new UserKey(input.getName())), user);
-        LOG.info("把数据写到树上了！");
         Futures.addCallback(tx.submit(), new FutureCallback<Void>() {
 
             @Override

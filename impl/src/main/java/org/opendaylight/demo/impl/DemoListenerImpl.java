@@ -33,18 +33,7 @@ public class DemoListenerImpl implements DataTreeChangeListener<User>{
         // TODO Auto-generated method stub
         for(DataTreeModification<User> change: changes) {
             DataObjectModification<User> rootNode = change.getRootNode();
-/*            if(rootNode.getModificationType() == DataObjectModification.ModificationType.WRITE) {
-                User newUser = rootNode.getDataAfter();
-                User oldUser = rootNode.getDataBefore();
-                LOG.info(
-                    "onDataTreeChanged - User config with path {} was added or replaced: old User: {}, new User: {}",
-                    change.getRootPath().getRootIdentifier(), oldUser, newUser);
-            }else if(rootNode.getModificationType() == DataObjectModification.ModificationType.DELETE) {
-                System.out.println("onDataTreeChanged - Toaster config with path {} was deleted: old Toaster: {}"+"分隔1"+
-                    change.getRootPath().getRootIdentifier()+"分隔2"+  rootNode.getDataBefore());
-            }
-            //Say sayNotification=new SayBuilder().setMessage(rootNode.getDataAfter().getName()).build();
-*/           try {
+           try {
                publishService.putNotification(new SayBuilder().setMessage(rootNode.getDataAfter().getName()).build());
                LOG.info("publish success");
            } catch (InterruptedException e) {
