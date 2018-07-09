@@ -3,7 +3,7 @@ module demo {
     namespace "urn:opendaylight:params:xml:ns:yang:demo";
     prefix "demo";
 
-    revision "2015-01-05" {
+    revision "2018-07-06" {
         description "Initial revision of demo model";
     }
     rpc demo {
@@ -23,17 +23,16 @@ module demo {
             type string;
         }
     }
-	container main {
-		list user{
-			key "name";
-			leaf name{
-				type string;
-			}
-			
-			leaf age {
-				type string;				
-			}
-		}
-	}
-    
+    container main {
+        list user {
+            key "name";
+            leaf name {
+                type string;
+            }
+
+            leaf age {
+                type string;
+            }
+        }
+    }
 }
