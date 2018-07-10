@@ -18,11 +18,10 @@ import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.demo.rev
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 /**
  * 数据树监听类.
  * @author zhengjingwen
- * @version 创建时间：2018年7月9日 下午5:22:34
+ * @version 创建时间：2018年7月10日 上午10:02:06
  */
 public class DemoListenerImpl implements DataTreeChangeListener<User> {
     private static final Logger LOG = LoggerFactory.getLogger(DemoListenerImpl.class);
@@ -66,3 +65,4 @@ public class DemoListenerImpl implements DataTreeChangeListener<User> {
     }
 
 }
+
