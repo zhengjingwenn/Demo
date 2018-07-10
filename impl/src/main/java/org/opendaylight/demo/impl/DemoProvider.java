@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 初始化类.
  * @author zhengjingwen
- * @version 创建时间：2018年7月10日 上午9:53:07
+ * @version 创建时间：2018年7月10日 上午9:53:09
  */
 public class DemoProvider {
     private static final Logger LOG = LoggerFactory.getLogger(DemoProvider.class);
