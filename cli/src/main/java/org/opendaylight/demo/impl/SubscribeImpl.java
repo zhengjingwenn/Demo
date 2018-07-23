@@ -21,6 +21,7 @@ public class SubscribeImpl implements DemoListener {
     public void onSay(final Say notification) {
         LOG.info("Get {}", notification.getMessage());
         LOG.info("Get {}", notification.getMessage());
+        LOG.info("Get {}", notification.getMessage());
     }
 
 }
